@@ -36,7 +36,6 @@ func createUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// добавление пользователя в базу данных
 	_, err = db.Exec("INSERT INTO users (name, balance) VALUES (?, ?)", newUser.Name, newUser.Balance)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -57,7 +56,6 @@ func createQuestHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// добавление задания в базу данных
 	_, err = db.Exec("INSERT INTO quests (name, cost) VALUES (?, ?)", newQuest.Name, newQuest.Cost)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
